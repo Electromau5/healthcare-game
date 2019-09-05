@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Consumer Healthcare Project</title>
+    <script src="game.js"></script>
+    <link rel="stylesheet" type="text/css" href="game.css">
+</head>
+<style>
+
+  /* The Modal (background) */
+  .modal 
+  {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4);
+  }
+
+  /* Modal Content */
+  .modal-content 
+  {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 40%;
+  }
+
+  
+    /**
+    body
+    {
+      background-image: url("images/panel.png");
+    }
+    **/
+    
+    #user
+    {
+        width: 250px;
+        height: 200px;
+        position: absolute;
+        -moz-transition : all 0.8s ease 0s;
+        transition: 0.5s ease 0s;
+        display: block;
+
+    }
+
+    #system
+    {
+        width: 250px;
+        height: 200px;
+        position: absolute;
+        -moz-transition : all 0.8s ease 0s;
+        transition: 0.5s ease 0s;
+        margin-top: 300px;
+        -moz-transform: scaleX(-1);
+        -o-transform: scaleX(-1);
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+        filter: FlipH;
+        -ms-filter: "FlipH";
+        animation: mymove 30s infinite;
+    }
+
+    @-webkit-keyframes mymove 
+    {
+      from {left: 0px;}
+      to {left: 1000px;}
+    }
+
+    @keyframes mymove 
+    {
+      from {left: 0px;}
+      to {left: 1000px;}
+  }
+
+    #button-1
+    {
+        margin-top: 200px;
+        position: absolute;
+        padding: 15px;
+        font-size: 18px;
+  
+  
+    }
+
+    #button-2
+    {
+        margin-top: 200px;
+        position: absolute;
+        margin-left: 150px;
+        padding: 15px;
+        font-size: 18px;
+    
+    }
+
+    #button-3
+    {
+        margin-top: 200px;
+        position: absolute;
+        margin-left: 300px;
+        padding: 15px;
+        font-size: 18px;
+    }
+
+    #button-4
+    {
+        margin-top: 200px;
+        position: absolute;
+        margin-left: 450px;
+        padding: 15px;
+        font-size: 18px;
+    }
+
+    #button-5
+    {
+        margin-top: 200px;
+        position: absolute;
+        margin-left: 600px;
+        padding: 15px;
+        font-size: 18px;
+    }
+
+    #q1-A
+    {
+      border: 1px solid #000;
+      position: absolute;
+      margin-top: 260px;
+      float: left;
+      width: 50px;
+      font-size: 25px;
+      height: 50px;
+    }
+
+    #q1-B
+    {
+      border: 1px solid #000;
+      position: absolute;
+      margin-top: 260px;
+      margin-left: 100px;
+      width: 50px;
+      font-size: 25px;
+      height: 50px;
+    }
+
+    #q1-C
+    {
+      border: 1px solid #000;
+      position: absolute;
+      margin-top: 260px;
+      margin-left: 200px;
+      width: 50px;
+      font-size: 25px;
+      height: 50px;
+    }
+
+    #q1-D
+    {
+      border: 1px solid #000;
+      position: absolute;
+      margin-top: 260px;
+      margin-left: 300px;
+      width: 50px;
+      font-size: 25px;
+      height: 50px;
+    }
+
+    #q1-E
+    {
+      border: 1px solid #000;
+      position: absolute;
+      margin-top: 260px;
+      margin-left: 400px;
+      width: 50px;
+      font-size: 25px;
+      height: 50px;
+    }
+/*
+    #image-1A
+    {
+      width: 200px;
+      height: 200px;
+      display: none;
+      position: absolute;
+      margin-top: 230px;
+      margin-left: 200px;
+    }
+  
+*/
+
+#point
+{
+  width: 100%;
+  margin-left: 20px;
+}
+
+#question-1
+{
+  float: right;
+  margin-top: 120px;
+  display: inline-block;
+  border: 1px solid #000;
+  padding: 25px;
+  border-radius: 10px;
+  display: none;
+  font-size: 18px;
+}
+
+
+#question-2
+{
+  float: right;
+  margin-top: 120px;
+  display: inline-block;
+  border: 1px solid #000;
+  padding: 25px;
+  border-radius: 10px;
+  display: none;
+}
+
+#question-3
+{
+  float: right;
+  margin-top: 120px;
+  display: inline-block;
+  border: 1px solid #000;
+  padding: 25px;
+  border-radius: 10px;
+  display: none;
+}
+
+#question-4
+{
+  float: right;
+  margin-top: 120px;
+  display: inline-block;
+  border: 1px solid #000;
+  padding: 25px;
+  border-radius: 10px;
+  display: none;
+}
+
+#question-5
+{
+  float: right;
+  margin-top: 120px;
+  display: inline-block;
+  border: 1px solid #000;
+  padding: 25px;
+  border-radius: 10px;
+  display: none;
+}
+
+#submit
+{
+    margin-top: 200px;
+    position: absolute;
+    margin-left: 750px;
+    padding: 15px;
+    font-size: 18px;
+    background-color: blue;
+    color: #fff;
+    border-radius: 5px;
+    border: none;
+}
+
+</style>
+<script>
+  
+  function submit()
+  {
+    var modal = document.getElementById("myModal");  
+    var button1 = document.getElementById("button-1");
+    var button2 = document.getElementById("button-2");
+    var button3 = document.getElementById("button-3");
+    var button4 = document.getElementById("button-4");
+    var button5 = document.getElementById("button-5");
+    if (button1.style.background == "green" 
+        && button2.style.background == "green" 
+        && button3.style.background == "green" 
+        && button4.style.background == "green" 
+        && button5.style.background == "green")
+    {
+      modal.style.display = "block";
+    }
+    else
+    {
+      alert("Loser's Badge");
+    }
+  }
+  
+
+  function q1()
+  {
+    var q1 = document.getElementById("question-1");
+    var q2 = document.getElementById("question-2");
+    var q3 = document.getElementById("question-3");
+    var q4 = document.getElementById("question-4");
+    var q5 = document.getElementById("question-5");
+    q1.style.display = "inline-block";
+    q2.style.display = "none";
+    q3.style.display = "none";
+    q4.style.display = "none";
+    q5.style.display = "none";
+  }
+  function q2()
+  {
+    var q1 = document.getElementById("question-1");
+    var q2 = document.getElementById("question-2");
+    var q3 = document.getElementById("question-3");
+    var q4 = document.getElementById("question-4");
+    var q5 = document.getElementById("question-5");
+    q1.style.display = "none";
+    q2.style.display = "inline-block";
+    q3.style.display = "none";
+    q4.style.display = "none";
+    q5.style.display = "none";
+  }
+  function q3()
+  {
+    var q1 = document.getElementById("question-1");
+    var q2 = document.getElementById("question-2");
+    var q3 = document.getElementById("question-3");
+    var q4 = document.getElementById("question-4");
+    var q5 = document.getElementById("question-5");
+    q1.style.display = "none";
+    q2.style.display = "none";
+    q3.style.display = "inline-block";
+    q4.style.display = "none";
+    q5.style.display = "none";
+  }
+  function q4()
+  {
+    var q1 = document.getElementById("question-1");
+    var q2 = document.getElementById("question-2");
+    var q3 = document.getElementById("question-3");
+    var q4 = document.getElementById("question-4");
+    var q5 = document.getElementById("question-5");
+    q1.style.display = "none";
+    q2.style.display = "none";
+    q3.style.display = "none";
+    q4.style.display = "inline-block";
+    q5.style.display = "none";
+  }
+  function q5()
+  {
+    var q1 = document.getElementById("question-1");
+    var q2 = document.getElementById("question-2");
+    var q3 = document.getElementById("question-3");
+    var q4 = document.getElementById("question-4");
+    var q5 = document.getElementById("question-5");
+    q1.style.display = "none";
+    q2.style.display = "none";
+    q3.style.display = "none";
+    q4.style.display = "none";
+    q5.style.display = "inline-block";
+  }
+
+  
+
+  /** Answer D **/
+  function firstMove()
+    {
+      var q1= document.getElementById("question-1");
+      var button = document.getElementById("button-1");
+        var pos = 0;
+        var elem = document.getElementById("user");   
+        if (q1.style.display == "inline-block")
+          {
+              pos += 150; 
+              elem.style.left = pos + 'px'; 
+              button.style.background = "green";
+              button.style.color = "white";
+          }
+          
+    }
+
+  /** Answer A **/
+  function secondMove()
+    {
+      var q2= document.getElementById("question-2");
+      var button = document.getElementById("button-2");
+        var pos = 0;
+        var elem = document.getElementById("user");   
+        if (q2.style.display == "inline-block")
+          {
+              pos += 300; 
+              elem.style.left = pos + 'px'; 
+              button.style.background = "green";
+              button.style.color = "white";
+          }
+    }
+
+  /** Answer B **/
+  function thirdMove()
+    {
+        var q3 = document.getElementById("question-3");
+        var button = document.getElementById("button-3");
+        var pos = 0;
+        var elem = document.getElementById("user");   
+        if (q3.style.display == "inline-block")
+          {
+              pos += 550; 
+              elem.style.left = pos + 'px'; 
+              button.style.background = "green";
+              button.style.color = "white";
+          }
+        }
+
+  /** Answer C **/
+    function fourthMove() {
+
+      var q4 = document.getElementById("question-4");
+      var button = document.getElementById("button-4");
+        var pos = 0;
+        var elem = document.getElementById("user");   
+        if (q4.style.display == "inline-block")
+          {
+              pos += 800; 
+              elem.style.left = pos + 'px'; 
+              button.style.background = "green";
+              button.style.color = "white";
+          }
+        }
+
+/** Answer E **/
+
+    function fifthMove() {
+  
+    var q5 = document.getElementById("question-5");
+    var button = document.getElementById("button-5");
+    var pos = 0;
+    var elem = document.getElementById("user");   
+      if (q5.style.display == "inline-block")
+        {
+          pos += 1000; 
+          elem.style.left = pos + 'px'; 
+          button.style.background = "green";
+          button.style.color = "white";
+        }
+      }
+    
+      
+        </script>
+<body>
+    <div id="container">
+        <img id="point" src="images/points.png">
+        <img  id="user" src="images/user.gif">
+        <img  id="system" src="images/system.gif">
+    </div>
+    <div class="buttons" style="width:70%">
+      <button id="button-1" onclick="q1()">Question 1</button> 
+      <button id="button-2" onclick="q2()">Question 2</button> 
+      <button id="button-3" onclick="q3()">Question 3</button> 
+      <button id="button-4" onclick="q4()">Question 4</button> 
+      <button id="button-5" onclick="q5()">Question 5</button> 
+      <button id="submit" onclick="submit()">Submit</button>
+
+      <div id="myModal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <img  id="gold" src="images/gold.png">
+        </div>
+
+      </div>
+
+    </div>
+    <button id="q1-A" onclick="secondMove()">A</button>
+    <button id="q1-B" onclick="thirdMove()">B</button>
+    <button id="q1-C" onclick="fourthMove()">C</button>
+    <button id="q1-D" onclick="firstMove()">D</button>
+    <button id="q1-E" onclick="fifthMove()">E</button>
+
+    <div id="question-1">
+        Which food group is associated with milk?<br>
+        A. Meat<br>
+        B. Vegetables<br>
+        C. Fruit<br>
+        D. Dairy<br>
+        E. Legumes
+    </div>
+    <div id="question-2">
+        How many hours of sleep does an adult need a day?<br>
+        A. 8 hours<br>
+        B. 2 hours<br>
+        C. 1 hour<br>
+        D. 12 hours<br>
+        E. No sleep
+    </div>
+    <div id="question-3">
+        How do you control diabetes?<br>
+        A. Water<br>
+        B. Insulin<br>
+        C. Adrenaline<br>
+        D. Fruits<br>
+        E. Sugar
+    </div>
+    <div id="question-4">
+        Which activity leads to lung cancer?<br>
+        A. Drinking<br>
+        B. Running<br>
+        C. Smoking<br>
+        D. Eating<br>
+        E. Watching T.V.
+     </div>
+     <div id="question-5">
+        Excessive drinking damages which organ?<br>
+        A. Heart<br>
+        B. Lungs<br>
+        C. Brain<br>
+        D. Stomach<br>
+        E. Liver
+      </div>
+</body>
+</html>
